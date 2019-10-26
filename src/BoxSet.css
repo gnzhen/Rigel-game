@@ -1,0 +1,7 @@
+.boxes {
+  background-color: #444c5c;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}

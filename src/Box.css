@@ -1,0 +1,28 @@
+.box {
+  height: 100px;
+  width: 100px;
+  margin: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.box-green {
+  background: #00cc66;
+  border: 1px solid black;
+}
+.box-white {
+  background: white;
+  border: 1px solid black;
+}
+.box-black {
+  background: black;
+  border: 1px solid black;
+}
+.box-orange {
+  background: #ff9933;
+  border: 1px solid black;
+}
+.box-red {
+  background: #ff3333;
+  border: 1px solid black;
+}
