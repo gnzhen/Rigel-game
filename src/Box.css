@@ -6,6 +6,21 @@
   cursor: pointer;
 }
 
+.box-enter {
+  opacity: 0;
+}
+.box-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.box-exit {
+  opacity: 1;
+}
+.box-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
 .box-green {
   background: #00cc66;
   border: 1px solid black;

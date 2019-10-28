@@ -1,6 +1,7 @@
 import React from 'react';
 import './BoxSet.css';
 import Box from './Box';
+const uuid = require('uuid/v1');
 
 class BoxSet extends React.Component {
   constructor(props) {
@@ -35,10 +36,34 @@ class BoxSet extends React.Component {
     this.state = {
       setNo: "set1",
     };
-
+    this.show = this.show.bind(this);
   }
   componentDidMount() {
     this.props.onRef(this);
+  }
+
+  show(setNo) {
+    return () => {
+      let newState = Object.assign({}, this.state);
+      newState.setNo = setNo;
+      this.setState(newState);
+      this.child.setState({ isShow: false });
+    }
+  }
+
+  createBoxes() {
+    var setNo = this.state.setNo;
+    var config = this.boxSetConfig[setNo];
+    var boxes = [];
+    var i = 0;
+    for (var color in config) {
+      var clickEvent = config[color];
+      var box = <Box key={this.createUniqueKey(setNo, i)} color={color} clickEvent={clickEvent}
+        onRef={ref => (this.child = ref)} />
+      boxes.push(box);
+      i++;
+    }
+    return boxes;
   }
   render() {
     var boxes = this.createBoxes();
@@ -47,24 +72,8 @@ class BoxSet extends React.Component {
     </div>
   }
 
-  show(setNo) {
-    return () => {
-      let newState = Object.assign({}, this.state);
-      newState.setNo = setNo;
-      this.setState(newState);
-    }
-  }
-
-  createBoxes() {
-    var setNo = this.state.setNo;
-    var config = this.boxSetConfig[setNo];
-    var boxes = [];
-    for (var color in config) {
-      var clickEvent = config[color];
-      var box = <Box color={color} clickEvent={clickEvent} />
-      boxes.push(box);
-    }
-    return boxes;
+  createUniqueKey(setNo, i) {
+    return uuid() + setNo + i;
   }
 }
 
