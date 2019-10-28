@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Box.css';
-import { Fade, Zoom, Slide, Grow } from '@material-ui/core';
+import { Grow } from '@material-ui/core';
 
 class Box extends React.Component {
   constructor(props) {
